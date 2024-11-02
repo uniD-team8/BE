@@ -1,6 +1,7 @@
 package unid.team8.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unid.team8.entity.Gift;
 import unid.team8.service.GiftService;
@@ -25,7 +26,7 @@ public class GiftController {
 
     @PostMapping("/{productid}")
     public GiftResponseDto getProductInfo(
-            @PathVariable("productid") Integer productId,
+            @PathVariable("productid") Long productId,
             @RequestBody UserRequestDto request) {
         return giftService.getGiftWithUserPoints(productId, request.getUserId());
     }
@@ -36,5 +37,11 @@ public class GiftController {
             @PathVariable("gift_id") Long giftId,
             @PathVariable("user_id") Long userId) {
         return giftService.updateUserGift(giftId, userId);
+    }
+
+    @GetMapping("/favorite/{userId}")
+    public ResponseEntity<GiftResponseDto> getFavoriteGifts(@PathVariable Long userId) {
+        GiftResponseDto dto=giftService.getFavoriteGift(userId);
+        return ResponseEntity.ok().body(dto);
     }
 }

@@ -6,7 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class GiftResponseDto {
+    private Long id;
     private String name;
+    private Integer points;
     private String photo;
-    private int percentage;
 }

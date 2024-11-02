@@ -24,7 +24,7 @@ public class GiftService {
         return giftRepository.findAll();
     }
 
-    public GiftResponseDto getGiftWithUserPoints(Integer productId, Long userId) {
+    public GiftResponseDto getGiftWithUserPoints(Long productId, Long userId) {
         // Gift 조회
         Gift gift = giftRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("Gift not found with ID: " + productId));
@@ -37,7 +37,7 @@ public class GiftService {
         int percentage = (int) ((double) user.getPoint() / gift.getPoints() * 100);
 
         // 결과 반환
-        return new GiftResponseDto(gift.getName(), gift.getPhoto(), percentage);
+        return new GiftResponseDto(gift.getId(), gift.getName(), gift.getPoints(), gift.getPhoto());
     }
 
     // gift_id와 user_id를 받아 User 엔티티의 giftId 필드를 업데이트
@@ -53,5 +53,10 @@ public class GiftService {
         return userRepository.save(user);
     }
 
-    
+
+    public GiftResponseDto getFavoriteGift(Long userId) {
+        User user=userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 id의 유저가 존재하지 않습니다"));
+        Gift target=giftRepository.findById(user.getGiftId()).orElseThrow(() -> new IllegalArgumentException("해당 id의 유저의 gift가 존재하지 않습니다"));
+        return new GiftResponseDto(target.getId(), target.getName(), target.getPoints(), target.getPhoto());
+    }
 }
