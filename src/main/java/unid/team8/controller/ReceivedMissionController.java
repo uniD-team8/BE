@@ -5,15 +5,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unid.team8.dto.AiResponseDto;
 import unid.team8.dto.DialogDto;
+import unid.team8.dto.MissionResponseDto;
 import unid.team8.entity.User;
 import unid.team8.repository.UserRepository;
 import unid.team8.service.AiService;
+import unid.team8.service.ReceivedMissionService;
 
 @RestController
 @RequiredArgsConstructor
 public class ReceivedMissionController {
     private final AiService aiService;
     private final UserRepository userRepository;
+    private final ReceivedMissionService receivedMissionService;
 
     @PostMapping("/dialog")
     public ResponseEntity<Void> postDialog(@RequestBody DialogDto dialogDto){
@@ -26,7 +29,7 @@ public class ReceivedMissionController {
 
     @GetMapping("/missions/{userId}")
     public ResponseEntity<MissionResponseDto> getMission(@PathVariable Long userId){
-
-
+        MissionResponseDto missions=receivedMissionService.getMissions(userId);
+        return ResponseEntity.ok().body(missions);
     }
 }

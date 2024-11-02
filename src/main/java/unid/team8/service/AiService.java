@@ -10,14 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import unid.team8.dto.AiResponseDto;
-import unid.team8.entity.KeyWord;
 import unid.team8.entity.Keyword;
-<<<<<<< Updated upstream
+
 import unid.team8.entity.ReceivedMission;
 import unid.team8.entity.User;
-=======
->>>>>>> Stashed changes
-import unid.team8.repository.KeyWordRepository;
+
 import unid.team8.repository.KeywordRepository;
 import unid.team8.repository.ReceivedMissionRepository;
 
@@ -64,9 +61,9 @@ public class AiService {
 
     // 반환값 어떻게 받는지 알아내고 수정하기
     public void updateKeyWords(List<String> emotions, User user){
-        Keyword keyWordTable=keywordRepository.findByUserId(user.getId());
+        Keyword keyWordTable=keywordRepository.findByUser_Id(user.getId());
         for(String emotion : emotions){
-            keywordService.increaseCount(emotion);
+            keywordService.increaseCount(emotion, user.getId());
         }
         keywordRepository.save(keyWordTable);
     }

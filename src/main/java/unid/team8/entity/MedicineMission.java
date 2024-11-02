@@ -3,6 +3,8 @@ package unid.team8.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "Medicine_Mission")
 @Getter
@@ -19,7 +21,7 @@ public class MedicineMission {
     private String medicine_name;
 
     @Column(name = "recent_time", nullable = false)
-    private java.sql.Timestamp recentTime;
+    private LocalDate recentTime;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
