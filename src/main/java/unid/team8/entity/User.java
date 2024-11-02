@@ -10,11 +10,12 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @AllArgsConstructor
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Integer userId;
+    private Long id;
 
     private String photo;
 
@@ -39,10 +40,10 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Keyword keyword; // Keyword와 1:1 관계
-<<<<<<< Updated upstream
-=======
+
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Letter letter; // Keyword와 1:1 관계
->>>>>>> Stashed changes
+
+
 }

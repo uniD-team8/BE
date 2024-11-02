@@ -13,7 +13,7 @@ public class Keyword {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "happy", nullable = false)
     private Long happy; // 기쁨

@@ -2,6 +2,9 @@ package unid.team8.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -18,12 +21,9 @@ public class ReceivedMission {
 
     @Builder.Default
     private boolean status=false;
-<<<<<<< Updated upstream
-=======
 
     @CreationTimestamp
     private LocalDate created_at;
->>>>>>> Stashed changes
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")

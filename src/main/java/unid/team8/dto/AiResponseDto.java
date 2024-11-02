@@ -7,5 +7,5 @@ import java.util.List;
 @Getter
 public class AiResponseDto {
     private List<String> missions;
-    private List<String> keyword;
+    private List<String> emotions;
 }
