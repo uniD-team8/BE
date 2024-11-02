@@ -1,0 +1,6 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://hackathon.c580ui20aqqp.ap-northeast-2.rds.amazonaws.com:3306/hackathon?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        username: admin
+        password: admin1234
