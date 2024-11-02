@@ -13,7 +13,7 @@ import unid.team8.service.AiService;
 @RequiredArgsConstructor
 public class ReceivedMissionController {
     private final AiService aiService;
-
+    /*
     @PostMapping("/dialog")
     public ResponseEntity<Void> postDialog(@RequestBody DialogDto dialogDto){
         AiResponseDto responseDto=aiService.sendToAiServer(dialogDto.getDialog());
@@ -22,4 +22,6 @@ public class ReceivedMissionController {
         return ResponseEntity.ok().build();
 
     }
+
+     */
 }

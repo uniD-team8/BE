@@ -9,8 +9,8 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class AiService {
-    private final RestTemplate restTemplate;
-    private final ReceivedMissionRepository receivedMissionRepository;
+    //private final RestTemplate restTemplate;
+    //private final ReceivedMissionRepository receivedMissionRepository;
 
-    public sendToAiServer
+    //public sendToAiServer
 }

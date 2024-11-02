@@ -11,7 +11,7 @@ import lombok.*;
 public class ReceivedMission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
+    @Column(name="received_mission_id")
     private Long id;
 
     private String missionName;
