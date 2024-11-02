@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "Medicine_Mission")
+@Table(name = "medicine_mission")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder

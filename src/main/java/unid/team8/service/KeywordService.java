@@ -1,6 +1,6 @@
 package unid.team8.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -16,19 +16,38 @@ public class KeywordService {
   @Autowired
   private KeywordRepository keywordRepository;
 
-  @Autowired
-  private ObjectMapper objectMapper;
+  public List<Keyword> getAllKeywords() {
+    return keywordRepository.findAll();
+  }
 
-  public List<String> getTop2Keywords(Long id) {
-    Optional<Keyword> keywordOpt = keywordRepository.findById(id);
+  public List<String> getTop2Keywords(Long user_id) {
+    Optional<Keyword> keywordOpt = keywordRepository.findByUserId(user_id);
+
     if (keywordOpt.isEmpty()) {
       return List.of(); // Return an empty list if no keyword is found
     }
 
     Keyword keyword = keywordOpt.get();
 
-    // Convert Keyword entity to a Map of attribute names and values
-    Map<String, Long> attributes = objectMapper.convertValue(keyword, Map.class);
+    // Manually map attributes from the Keyword entity
+    Map<String, Long> attributes = new HashMap<>();
+    attributes.put("happy", keyword.getHappy());
+    attributes.put("satisfied", keyword.getSatisfied());
+    attributes.put("positive_feeling", keyword.getPositiveFeeling());
+    attributes.put("peaceful", keyword.getPeaceful());
+    attributes.put("stable", keyword.getStable());
+    attributes.put("mindful", keyword.getMindful());
+    attributes.put("depressed", keyword.getDepressed());
+    attributes.put("lost", keyword.getLost());
+    attributes.put("overwhelmed", keyword.getOverwhelmed());
+    attributes.put("angry", keyword.getAngry());
+    attributes.put("annoyed", keyword.getAnnoyed());
+    attributes.put("dissatisfied", keyword.getDissatisfied());
+    attributes.put("worried", keyword.getWorried());
+    attributes.put("tense", keyword.getTense());
+    attributes.put("stress", keyword.getStress());
+    attributes.put("user_id", keyword.getId());
+    // Add other attributes as needed
 
     // Sort attributes by value in descending order and get the top 2 attribute names
     return attributes.entrySet().stream()
