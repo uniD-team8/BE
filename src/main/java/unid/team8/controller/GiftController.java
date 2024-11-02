@@ -6,7 +6,7 @@ import unid.team8.entity.Gift;
 import unid.team8.service.GiftService;
 import unid.team8.dto.GiftResponseDto;
 import unid.team8.dto.UserRequestDto;
-
+import unid.team8.entity.User;
 import java.util.List;
 
 @RestController
@@ -27,5 +27,13 @@ public class GiftController {
             @PathVariable("productid") Integer productId,
             @RequestBody UserRequestDto request) {
         return giftService.getGiftWithUserPoints(productId, request.getUserId());
+    }
+
+    // 특정 gift_id로 User의 giftId 필드를 업데이트하는 엔드포인트
+    @PutMapping("/{gift_id}/user/{user_id}")
+    public User updateUserGift(
+            @PathVariable("gift_id") Long giftId,
+            @PathVariable("user_id") Long userId) {
+        return giftService.updateUserGift(giftId, userId);
     }
 }
