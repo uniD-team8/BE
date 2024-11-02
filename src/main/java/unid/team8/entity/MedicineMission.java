@@ -18,7 +18,7 @@ public class MedicineMission {
     private Integer medicineMissionId;
 
     @Column(name = "medicine_name")
-    private String medicine_name;
+    private String medication;
 
     @Column(name = "recent_time", nullable = false)
     private LocalDate recentTime;

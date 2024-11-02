@@ -9,9 +9,11 @@ import unid.team8.service.CareCallPointService;
 @RequiredArgsConstructor
 public class getCareCall {
 
+    private final CareCallPointService careCallPointService;
+
     @GetMapping("/{userId}")
-    public String incrementUserPoint(@PathVariable Integer userId) {
-        CareCallPointService.incrementUserPoint(userId);
+    public String incrementUserPoint(@PathVariable Long userId) {
+        careCallPointService.incrementUserPoint(userId);
         return "User point incremented successfully";
     }
 }
