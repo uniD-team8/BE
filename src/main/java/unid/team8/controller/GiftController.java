@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import unid.team8.entity.Gift;
 import unid.team8.service.GiftService;
+import unid.team8.dto.GiftResponseDto;
+import unid.team8.dto.UserRequestDto;
 
 import java.util.List;
 
@@ -18,5 +20,12 @@ public class GiftController {
     @GetMapping("/list")
     public List<Gift> getAllGifts() {
         return giftService.getAllGifts();
+    }
+
+    @PostMapping("/{productid}")
+    public GiftResponseDto getProductInfo(
+            @PathVariable("productid") Integer productId,
+            @RequestBody UserRequestDto request) {
+        return giftService.getGiftWithUserPoints(productId, request.getUserId());
     }
 }
