@@ -27,7 +27,6 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class ReceivedMissionService {
     private final ReceivedMissionRepository receivedMissionRepository;
     private final MedicineMissionRepository medicineMissionRepository;

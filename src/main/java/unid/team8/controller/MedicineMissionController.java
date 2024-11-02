@@ -12,10 +12,12 @@ import unid.team8.service.MedicineMissionService;
 @RequiredArgsConstructor
 public class MedicineMissionController {
     private final MedicineMissionService medicineMissionService;
-
+/*
     @PostMapping("/medicine")
     public ResponseEntity<Void> createMedicine(@RequestBody MedicineRequestDto medicineRequestDto){
         medicineMissionService.createMedicine(medicineRequestDto);
         return ResponseEntity.ok().build();
     }
+
+ */
 }

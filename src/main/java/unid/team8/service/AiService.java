@@ -25,7 +25,6 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class AiService {
     private final RestTemplate restTemplate;
     private final ReceivedMissionRepository receivedMissionRepository;
@@ -52,6 +51,7 @@ public class AiService {
 
         // AI 서버로 POST 요청 및 AiResponseDto로 응답 받음
         ResponseEntity<AiResponseDto> response = restTemplate.postForEntity(aiServerUrl, entity, AiResponseDto.class); //AI 서버의 응답을 AiResponse 형식으로 매핑하여 받겠다는 의미
+        System.out.println(response.getBody());
         return response.getBody();
     }
 
