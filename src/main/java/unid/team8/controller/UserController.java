@@ -2,6 +2,7 @@ package unid.team8.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +13,8 @@ import unid.team8.service.LetterService;
 import unid.team8.service.UserService;
 
 @RestController
+@CrossOrigin(origins="*")
 public class UserController {
-
   @Autowired
   private UserService userService;
   @Autowired

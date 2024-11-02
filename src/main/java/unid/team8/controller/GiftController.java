@@ -10,6 +10,7 @@ import unid.team8.entity.User;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/product")
 @RequiredArgsConstructor
 public class GiftController {
