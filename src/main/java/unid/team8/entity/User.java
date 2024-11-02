@@ -22,9 +22,6 @@ public class User {
 
     private Integer point;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private MedicineMission medicineMission;
-
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
@@ -36,4 +33,10 @@ public class User {
 
     @Column(name = "gift_id", nullable = false)
     private Long giftId;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private MedicineMission medicineMission;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Keyword keyword; // Keyword와 1:1 관계
 }

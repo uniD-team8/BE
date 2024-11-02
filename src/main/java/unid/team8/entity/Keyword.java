@@ -1,65 +1,66 @@
 package unid.team8.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Table(name = "Keyword")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@AllArgsConstructor
 public class Keyword {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name="user_id")
-  Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-  @Column(name="기쁨")
-  Long happy;
+    @Column(name = "happy", nullable = false)
+    private Long happy; // 기쁨
 
-  @Column(name="만족")
-  Long satisfied;
+    @Column(name = "satisfied", nullable = false)
+    private Long satisfied; // 만족
 
-  @Column(name="긍정적인 느낌")
-  Long positive;
+    @Column(name = "positive_feeling", nullable = false)
+    private Long positiveFeeling; // 긍정적인 느낌
 
-  @Column(name="평화")
-  Long peaceful;
+    @Column(name = "peaceful", nullable = false)
+    private Long peaceful; // 평화
 
-  @Column(name="안정감")
-  Long stable;
+    @Column(name = "stable", nullable = false)
+    private Long stable; // 안정감
 
-  @Column(name="마음의 평화")
-  Long mindful;
+    @Column(name = "mindful", nullable = false)
+    private Long mindful; // 마음의 평화
 
-  @Column(name="우울")
-  Long depressed;
+    @Column(name = "depressed", nullable = false)
+    private Long depressed; // 우울
 
-  @Column(name="상실감")
-  Long lost;
+    @Column(name = "lost", nullable = false)
+    private Long lost; // 상실감
 
-  @Column(name="좌절")
-  Long overwhelmed;
+    @Column(name = "overwhelmed", nullable = false)
+    private Long overwhelmed; // 좌절
 
-  @Column(name="화남")
-  Long angry;
+    @Column(name = "angry", nullable = false)
+    private Long angry; // 화남
 
-  @Column(name="짜증")
-  Long annoyed;
+    @Column(name = "annoyed", nullable = false)
+    private Long annoyed; // 짜증
 
-  @Column(name="불만")
-  Long dissatisfied;
+    @Column(name = "dissatisfied", nullable = false)
+    private Long dissatisfied; // 불만
 
-  @Column(name="걱정")
-  Long worried;
+    @Column(name = "worried", nullable = false)
+    private Long worried; // 걱정
 
-  @Column(name="긴장")
-  Long tense;
+    @Column(name = "tense", nullable = false)
+    private Long tense; // 긴장
 
-  @Column(name="스트레스")
-  Long stress;
+    @Column(name = "stress", nullable = false)
+    private Long stress; // 스트레스
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

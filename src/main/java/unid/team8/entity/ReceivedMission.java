@@ -15,10 +15,11 @@ public class ReceivedMission {
     private Long id;
 
     private String missionName;
-    private boolean status;
+
+    @Builder.Default
+    private boolean status=false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
-
 }
