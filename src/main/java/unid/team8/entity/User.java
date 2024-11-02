@@ -23,6 +23,10 @@ public class User {
 
     private Integer point;
 
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
+
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
