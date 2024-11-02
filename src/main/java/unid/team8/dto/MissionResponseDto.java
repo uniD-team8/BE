@@ -11,4 +11,5 @@ public class MissionResponseDto {
     private List<String> missions;
     //private List<String> keyword;
     private boolean isMedicine;
+    private String summary;
 }

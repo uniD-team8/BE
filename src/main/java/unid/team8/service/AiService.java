@@ -17,6 +17,7 @@ import unid.team8.entity.User;
 
 import unid.team8.repository.KeywordRepository;
 import unid.team8.repository.ReceivedMissionRepository;
+import unid.team8.repository.UserRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,17 +31,22 @@ public class AiService {
     private final ReceivedMissionRepository receivedMissionRepository;
     private final KeywordRepository keywordRepository;
     private final KeywordService keywordService;
+    private final UserRepository userRepository;
 
 
     @Value("${ai.server.url}")
     private String aiServerUrl;
+
+    @Value("${app.callback.url}") // application.properties에서 콜백 URL을 가져오기
+    private String callbackUrl;
 
     public AiResponseDto sendToAiServer(String dialog) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         Map<String, String> requestBody = new HashMap<>();
-        requestBody.put("dialog", dialog);
+        requestBody.put("dialog_text", dialog);
+        requestBody.put("callback_url", callbackUrl);
 
         HttpEntity<Map<String, String>> entity = new HttpEntity<>(requestBody, headers);
 
@@ -69,4 +75,8 @@ public class AiService {
     }
 
 
+    public void saveSummary(String summary, User user) {
+        User target=userRepository.findById(user.getId()).orElseThrow(()-> new IllegalArgumentException("해당 id의 유저가 없습니다."));
+        target.setSummary(summary);
+    }
 }

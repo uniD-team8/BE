@@ -29,4 +29,8 @@ public class ReceivedMission {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
+
+    public void updateStatus(){
+        this.status=true;
+    }
 }

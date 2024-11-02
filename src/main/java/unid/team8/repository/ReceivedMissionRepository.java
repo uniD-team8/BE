@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ReceivedMissionRepository extends JpaRepository<ReceivedMission, Long> {
     List<ReceivedMission> findByUser_Id(Long userId);
+
+    ReceivedMission findByMissionName(String missionName);
 }
