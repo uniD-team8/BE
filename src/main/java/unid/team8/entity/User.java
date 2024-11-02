@@ -40,16 +40,9 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Keyword keyword; // Keyword와 1:1 관계
-<<<<<<< Updated upstream
 
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Letter letter; // Keyword와 1:1 관계
 
-
-=======
-    
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Letter letter; // Keyword와 1:1 관계
->>>>>>> Stashed changes
 }
