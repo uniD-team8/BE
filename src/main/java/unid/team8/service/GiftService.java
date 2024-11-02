@@ -39,4 +39,19 @@ public class GiftService {
         // 결과 반환
         return new GiftResponseDto(gift.getName(), gift.getPhoto(), percentage);
     }
+
+    // gift_id와 user_id를 받아 User 엔티티의 giftId 필드를 업데이트
+    public User updateUserGift(Long giftId, Long userId) {
+        // User 조회
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + userId));
+        
+        // giftId 필드 업데이트
+        user.setGiftId(giftId);
+        
+        // 변경 사항 저장
+        return userRepository.save(user);
+    }
+
+    
 }
