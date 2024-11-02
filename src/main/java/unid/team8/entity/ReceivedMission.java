@@ -21,10 +21,16 @@ public class ReceivedMission {
 
     @Builder.Default
     private boolean status=false;
+<<<<<<< Updated upstream
 
     @CreationTimestamp
     private LocalDate created_at;
 
+=======
+    
+    @CreationTimestamp
+    private LocalDate created_at;
+>>>>>>> Stashed changes
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
