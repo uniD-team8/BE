@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import unid.team8.dto.ChildSayDto;
 import unid.team8.entity.Letter;
 import unid.team8.service.KeywordService;
 import unid.team8.service.LetterService;
@@ -31,7 +33,7 @@ public class UserController {
   }
 
   @PostMapping("/child/say")
-  public void createChildSay(@RequestParam Long user_id, @RequestParam String content, @RequestParam String imageUrl) {
-    letterService.createLetter(imageUrl, content, user_id);
+  public void createChildSay(@RequestBody ChildSayDto childSayDto) {
+    letterService.createLetter(childSayDto);
   }
 }

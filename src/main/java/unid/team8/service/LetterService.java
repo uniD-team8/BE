@@ -3,6 +3,7 @@ package unid.team8.service;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import unid.team8.dto.ChildSayDto;
 import unid.team8.entity.Letter;
 import unid.team8.entity.User;
 import unid.team8.repository.LetterRepository;
@@ -17,16 +18,16 @@ public class LetterService {
   @Autowired
   private UserRepository userRepository;
 
-  public Letter createLetter(String imageUrl, String childSay, Long user_id) {
-    Optional<User> result = userRepository.findById(user_id);
+  public Letter createLetter(ChildSayDto childSayDto) {
+    Optional<User> result = userRepository.findById(childSayDto.getUserId());
 
     if (result.isEmpty()) {
       return null;
     }
     User user = result.get();
     Letter letter = Letter.builder()
-        .imageUrl(imageUrl)
-        .childSay(childSay)
+        .imageUrl(childSayDto.getImageUrl())
+        .childSay(childSayDto.getContent())
         .user(user)
         .build();
 
