@@ -2,6 +2,7 @@ package unid.team8.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedBy;
 
 import java.time.LocalDate;
 
@@ -15,7 +16,7 @@ public class MedicineMission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "medicine_mission_id")
-    private Integer medicineMissionId;
+    private Integer id;
 
     @Column(name = "medicine_name")
     private String medication;

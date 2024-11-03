@@ -19,15 +19,11 @@ public class MedicineMissionService {
     private final UserRepository userRepository;
     private final MedicineMissionRepository medicineMissionRepository;
 
-    public void createMedicine(Long userId, String medication) {
-        Optional<User> result = userRepository.findById(userId);
+    public void createMedicine(MedicineRequestDto medicineRequestDto) {
+        User user = userRepository.findById(medicineRequestDto.getUserId()).orElseThrow(()->new IllegalArgumentException("해당 id 유저가 없습니다."));
 
-        if (result.isEmpty()) {
-            return; //new IllegalArgumentException("해당 id의 유저가 없습니다.");
-        }
-        User user = result.get();
         MedicineMission mission = MedicineMission.builder()
-                .medication(medication)
+                .medication(medicineRequestDto.getMedication())
                 .user(user)
                 .recentTime(LocalDate.now())
                 .build();
@@ -35,16 +31,8 @@ public class MedicineMissionService {
         medicineMissionRepository.save(mission); // Save the mission to the database
     }
 
-    public void deleteMedicine(Integer medicine_id) {
-        // Assuming you have a method to find a MedicineMission by medication name and user
-        Optional<MedicineMission> missionResult = medicineMissionRepository.findByMedicineMissionId(medicine_id);
-
-        if (missionResult.isPresent()) {
-            MedicineMission mission = missionResult.get();
-            medicineMissionRepository.delete(mission.getUser().getMedicineMission()); // Delete the mission from the database
-        } else {
-            // Optionally, handle the case where the mission doesn't exist
-            // e.g., throw new NoSuchElementException("해당 사용자의 약속이 존재하지 않습니다.");
-        }
+    public void deleteMedicine(Long userId) {
+        MedicineMission medicine = medicineMissionRepository.findByUser_Id(userId);
+        medicineMissionRepository.delete(medicine);
     }
 }
