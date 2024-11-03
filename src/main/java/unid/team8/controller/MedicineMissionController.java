@@ -7,7 +7,7 @@ import unid.team8.dto.MedicineRequestDto;
 import unid.team8.service.MedicineMissionService;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH, RequestMethod.OPTIONS, RequestMethod.HEAD})
 @RequiredArgsConstructor
 public class MedicineMissionController {
     private final MedicineMissionService medicineMissionService;

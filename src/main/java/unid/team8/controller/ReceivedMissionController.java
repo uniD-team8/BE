@@ -13,7 +13,7 @@ import unid.team8.service.AiService;
 import unid.team8.service.ReceivedMissionService;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH, RequestMethod.OPTIONS, RequestMethod.HEAD})
 @RequiredArgsConstructor
 public class ReceivedMissionController {
     private final AiService aiService;

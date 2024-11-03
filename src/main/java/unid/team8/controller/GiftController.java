@@ -11,7 +11,7 @@ import unid.team8.entity.User;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH, RequestMethod.OPTIONS, RequestMethod.HEAD})
 @RequestMapping("/product")
 @RequiredArgsConstructor
 public class GiftController {
