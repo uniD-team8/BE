@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import unid.team8.entity.Keyword;
 import unid.team8.repository.KeywordRepository;
@@ -19,34 +20,36 @@ public class KeywordService {
         return keyWordRepository.findAll();
     }
 
+
     public List<String> getTop2Keywords(Long user_id) {
         Optional<Keyword> keywordOpt = keyWordRepository.findByUserId(user_id);
 
-        if (keywordOpt.isEmpty()) {
-            return List.of(); // Return an empty list if no keyword is found
-        }
 
-        Keyword keyword = keywordOpt.get();
+    if (keywordOpt.isEmpty()) {
+      return List.of(); // Return an empty list if no keyword is found
+    }
 
-        // Manually map attributes from the Keyword entity
-        Map<String, Long> attributes = new HashMap<>();
-        attributes.put("happy", keyword.getHappy());
-        attributes.put("satisfied", keyword.getSatisfied());
-        attributes.put("positive_feeling", keyword.getPositiveFeeling());
-        attributes.put("peaceful", keyword.getPeaceful());
-        attributes.put("stable", keyword.getStable());
-        attributes.put("mindful", keyword.getMindful());
-        attributes.put("depressed", keyword.getDepressed());
-        attributes.put("lost", keyword.getLost());
-        attributes.put("overwhelmed", keyword.getOverwhelmed());
-        attributes.put("angry", keyword.getAngry());
-        attributes.put("annoyed", keyword.getAnnoyed());
-        attributes.put("dissatisfied", keyword.getDissatisfied());
-        attributes.put("worried", keyword.getWorried());
-        attributes.put("tense", keyword.getTense());
-        attributes.put("stress", keyword.getStress());
-        attributes.put("user_id", keyword.getId());
-        // Add other attributes as needed
+    Keyword keyword = keywordOpt.get();
+
+    // Manually map attributes from the Keyword entity
+    Map<String, Long> attributes = new HashMap<>();
+    attributes.put("happy", keyword.getHappy());
+    attributes.put("satisfied", keyword.getSatisfied());
+    attributes.put("positive_feeling", keyword.getPositiveFeeling());
+    attributes.put("peaceful", keyword.getPeaceful());
+    attributes.put("stable", keyword.getStable());
+    attributes.put("mindful", keyword.getMindful());
+    attributes.put("depressed", keyword.getDepressed());
+    attributes.put("lost", keyword.getLost());
+    attributes.put("overwhelmed", keyword.getOverwhelmed());
+    attributes.put("angry", keyword.getAngry());
+    attributes.put("annoyed", keyword.getAnnoyed());
+    attributes.put("dissatisfied", keyword.getDissatisfied());
+    attributes.put("worried", keyword.getWorried());
+    attributes.put("tense", keyword.getTense());
+    attributes.put("stress", keyword.getStress());
+    attributes.put("user_id", keyword.getId());
+    // Add other attributes as needed
 
         // Sort attributes by value in descending order and get the top 2 attribute names
         return attributes.entrySet().stream()
@@ -109,4 +112,5 @@ public class KeywordService {
                 throw new IllegalArgumentException("Unknown emotion: " + emotion);
         }
     }
+
 }

@@ -7,7 +7,7 @@ import org.springframework.data.annotation.CreatedBy;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Medicine_Mission")
+@Table(name = "medicine_mission")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
